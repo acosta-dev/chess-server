@@ -32,6 +32,9 @@ app.use(cors());
 // setting the routers
 const gameRouter = require('./routes/gameRouter');
 const userRouter = require('./routes/userRouter');
+app.use('/', (req, res)=>{
+    res.json('Chess API')
+});
 app.use('/g', gameRouter);
 app.use('/u', userRouter);
 
