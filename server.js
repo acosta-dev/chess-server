@@ -20,7 +20,7 @@ const io = socketio(server, {
         res.end();
     }
 });
-
+io.set('origins', 'https://chess-wine-mu.vercel.app:80');
 io.on('connection', (socket) => {
     socket.on('join', ({ gameId }) => {
         socket.join(gameId);
