@@ -14,6 +14,7 @@ const io = socketio(server, {
         origin: '*',
     },
 });
+io.set('origins', '*:*');
 
 io.on('connection', (socket) => {
     socket.on('join', ({ gameId }) => {
