@@ -10,10 +10,15 @@ const app = express();
 
 const server = http.createServer(app);
 const io = socketio(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        credentials: true,
-    },
+    handlePreflightRequest: (req, res) => {
+        const headers = {
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+            "Access-Control-Allow-Credentials": true
+        };
+        res.writeHead(200, headers);
+        res.end();
+    }
 });
 
 io.on('connection', (socket) => {
