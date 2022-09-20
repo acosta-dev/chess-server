@@ -14,6 +14,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 
 Router.post('/register', async (req, res) => {
+    
     // validate the user data.
     if (!req.body.username || !req.body.email || !req.body.password || !req.body.confirmPassword) {
         return res.status(400).json({ error: 'Please fill all the fields' });

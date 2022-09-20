@@ -11,7 +11,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
     cors: {
-        origin: 'https://chess-35y5ayajh-darkmaster088.vercel.app',
+        origin: 'http://localhost:3000',
         credentials: true,
     },
 });
@@ -32,9 +32,6 @@ app.use(cors());
 // setting the routers
 const gameRouter = require('./routes/gameRouter');
 const userRouter = require('./routes/userRouter');
-app.use('/', (req, res)=>{
-    res.json('Chess API')
-});
 app.use('/g', gameRouter);
 app.use('/u', userRouter);
 
